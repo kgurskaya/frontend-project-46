@@ -1,26 +1,28 @@
 const formatStylish = (diff) => {
-  //тут нужно напистать следующую логику:
+  // тут нужно напистать следующую логику:
   // получаем объект diff (в нем весь список различий в файлах)
   // проходимся по каждому различию и печатаем в формате как от нас требуется для stlylish
-
   const format = (node) =>
+    // eslint-disable-next-line array-callback-return, implicit-arrow-linebreak
     node.map((data) => {
-      //switch проверяем что случилось со строчкой
+      // switch проверяем что случилось со строчкой
       switch (data.type) {
-        // если добавлена - рисуем плюсик и что-то там пишем
-        case "added":
+      // если добавлена - рисуем плюсик и что-то там пишем
+        case 'added':
           return `+ ${data.key}: ${data.value}`;
-        // если удален - рисуем минус и что-то там пишем
-        case "deleted":
+          // если удален - рисуем минус и что-то там пишем
+        case 'deleted':
           return `- ${data.key}: ${data.value}`;
-        case "equal":
+        case 'equal':
           return `  ${data.key}: ${data.value}`;
-        case "modified":
+        case 'modified':
           return `- ${data.key}: ${data.value1}\n+ ${data.key}: ${data.value2}`;
+        default:
+          throw new Error('unsupported data type');
       }
     });
 
-  return `${format(diff).join("\n")}`;
+  return `${format(diff).join('\n')}`;
 };
 
 export default formatStylish;
