@@ -35,4 +35,4 @@ jobs:
           cache: 'npm'
       - run: make install-deps
       - run: make lint
-#       - run: make test
+      - run: make test
