@@ -11,5 +11,3 @@ program
   .argument("<filepath2>", "filepath2")
   .action((file1, file2) => genDiff(file1, file2));
 program.parse();
-
-// .arguments('<filepath1> <filepath2>')
