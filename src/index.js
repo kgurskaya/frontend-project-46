@@ -1,6 +1,9 @@
 import * as fs from 'fs';
+// eslint-disable-next-line import/extensions
 import getDiff from './getDiff.js';
+// eslint-disable-next-line import/extensions
 import formatDiff from './formatters/index.js';
+// eslint-disable-next-line import/extensions
 import getFileExtention from './helpers.js';
 
 const getFileContent = (file) => {

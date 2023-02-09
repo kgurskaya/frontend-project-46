@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { program } from 'commander';
+// eslint-disable-next-line import/extensions
 import genDiff from '../src/index.js';
 
 program
