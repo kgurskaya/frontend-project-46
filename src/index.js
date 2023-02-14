@@ -1,10 +1,14 @@
-import * as fs from 'fs';
+// import * as fs from 'fs';
+import fs from 'fs';
+import path from 'path';
 // eslint-disable-next-line import/extensions
 import getDiff from './getDiff.js';
 // eslint-disable-next-line import/extensions
 import formatDiff from './formatters/index.js';
 // eslint-disable-next-line import/extensions
 import getFileExtention from './helpers.js';
+
+const buildAbsolutePath = (filepath) => path.resolve(process.cwd(), filepath);
 
 const getFileContent = (file) => {
   const fileContent = fs.readFileSync(file, 'utf8');
@@ -21,8 +25,8 @@ const parse = (content, extention) => {
 };
 
 export default (file1, file2, formatter = 'stylish') => {
-  const fileContent1 = getFileContent(file1);
-  const fileContent2 = getFileContent(file2);
+  const fileContent1 = getFileContent(buildAbsolutePath(file1));
+  const fileContent2 = getFileContent(buildAbsolutePath(file2));
   const parsedObject1 = parse(fileContent1, getFileExtention(file1));
   const parsedObject2 = parse(fileContent2, getFileExtention(file2));
   // получаем объект с различиями в файле
@@ -31,4 +35,5 @@ export default (file1, file2, formatter = 'stylish') => {
   const result = formatDiff(data, formatter);
   // eslint-disable-next-line no-console
   console.log(result);
+  return result;
 };
