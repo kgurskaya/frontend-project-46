@@ -18,3 +18,11 @@ test('JSON', () => {
   expect(genDiff(filepath1, filepath2)).toEqual(expectedResult1);
   expect(genDiff(filepath1, filepath2, 'stylish')).toEqual(expectedResult1);
 });
+
+test('YAML', () => {
+  const filepath1 = getFixturePath('file1.yml');
+  const filepath2 = getFixturePath('file2.yml');
+
+  expect(genDiff(filepath1, filepath2)).toEqual(expectedResult1);
+  expect(genDiff(filepath1, filepath2, 'stylish')).toEqual(expectedResult1);
+});

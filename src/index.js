@@ -7,6 +7,8 @@ import getDiff from './getDiff.js';
 import formatDiff from './formatters/index.js';
 // eslint-disable-next-line import/extensions
 import getFileExtention from './helpers.js';
+// eslint-disable-next-line import/no-extraneous-dependencies, import/order
+import yaml from 'js-yaml';
 
 const buildAbsolutePath = (filepath) => path.resolve(process.cwd(), filepath);
 
@@ -19,6 +21,10 @@ const parse = (content, extention) => {
   switch (extention) {
     case 'json':
       return JSON.parse(content);
+    case 'yml':
+      return yaml.load(content);
+    case 'yaml':
+      return yaml.load(content);
     default:
       throw new Error('Unsupported file format');
   }
